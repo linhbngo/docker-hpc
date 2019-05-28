@@ -1,0 +1,41 @@
+version: "2"
+
+networks:
+  goldenram:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.0.0/16
+          gateway: 10.1.0.1
+
+services:
+  head:
+    build:
+      context: ./head
+    networks:
+      goldenram:
+        ipv4_address: 10.1.0.2
+    extra_hosts:
+      - "head.golden.ram:10.1.0.2"
+      - "compute-1.golden.ram:10.1.0.5"
+      - "compute-2.golden.ram:10.1.0.6"
+  compute-1:
+    build:
+      context: ./compute
+    networks:
+      goldenram:
+        ipv4_address: 10.1.0.5
+    extra_hosts:
+      - "head.golden.ram:10.1.0.2"
+      - "compute-1.golden.ram:10.1.0.5"
+      - "compute-2.golden.ram:10.1.0.6"
+  compute-2:
+    build:
+      context: ./compute
+    networks:
+      goldenram:
+        ipv4_address: 10.1.0.6
+    extra_hosts:
+      - "head.golden.ram:10.1.0.2"
+      - "compute-1.golden.ram:10.1.0.5"
+      - "compute-2.golden.ram:10.1.0.6"
