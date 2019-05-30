@@ -10,8 +10,11 @@ networks:
 
 services:
   head:
+    privileged: true
     build:
       context: ./head
+    cap_add:
+      - ALL
     networks:
       goldenram:
         ipv4_address: 10.1.0.2
@@ -19,6 +22,7 @@ services:
       - "head.golden.ram:10.1.0.2"
       - "compute-1.golden.ram:10.1.0.5"
       - "compute-2.golden.ram:10.1.0.6"
+
   compute-1:
     build:
       context: ./compute
