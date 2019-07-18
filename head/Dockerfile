@@ -16,4 +16,4 @@ RUN  wget --quiet https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.
   make all install
 
 COPY ./head.sh /usr/local/bin
-#ENTRYPOINT ["/usr/local/bin/head.sh"]
+ENTRYPOINT ["/usr/local/bin/head.sh"]
