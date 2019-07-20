@@ -7,10 +7,11 @@ USER root
 
 RUN apk update
 
-RUN apk add --no-cache perl gcc g++ make libc-dev linux-headers bash
+RUN apk add --no-cache perl libc-dev linux-headers bash
 
-RUN apk add --no-cache openrc openssh nano
+RUN apk add --no-cache openrc openssh nano openldap-clients
 
+#RUN apk add --no-cache gcc g++ make
 #RUN  wget --quiet https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz && \
 #  gunzip -c openmpi-4.0.1.tar.gz | tar xf - && \
 #  cd openmpi-4.0.1 && \
