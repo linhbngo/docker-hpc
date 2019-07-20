@@ -38,7 +38,8 @@ services:
       - "ldap.golden.ram:10.1.0.3"
       - "compute-1.golden.ram:10.1.0.5"
       - "compute-2.golden.ram:10.1.0.6"
-
+    ports:
+      - 8080:80
 #  compute-1:
 #    build:
 #      context: ./compute
