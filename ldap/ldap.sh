@@ -13,7 +13,7 @@ apt-get -y install apache2 php php-cgi libapache2-mod-php php-common php-pear ph
 
 a2enconf php7.0-cgi 
 
-systemctl restart apache2 
+service apache2 start
 
 # Pre-seed the slapd passwords 
 
@@ -84,7 +84,7 @@ sed -i "s@$servers->setValue('login','bind_id','cn=admin,dc=example,dc=com');.*@
 
 sed -i "s@$default = $this->getServer()->getValue('appearance','password_hash');.*@$default = $this->getServer()->getValue('appearance','password_hash_custom');@g" /usr/share/phpldapadmin/lib/TemplateRender.php
 
-systemctl apache2 restart 
+service apache2 start
 
 echo ------------------------# 
 echo 'PHPldapadmin installed.'
