@@ -1,15 +1,13 @@
 # This is a Dockerfile to build a head node for a cluster
 
-# We will start from a base Alpine
-FROM alpine:3.9.4
+# We will start from a base Ubuntu 18.04
+FROM ubuntu:18.04
 
 USER root
 
-RUN apk update
+RUN apt-get update
 
-RUN apk add --no-cache perl libc-dev linux-headers bash
-
-RUN apk add --no-cache openrc openssh nano openldap-clients
+RUN apt-get install -yqq wget
 
 #RUN apk add --no-cache gcc g++ make
 #RUN  wget --quiet https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz && \
