@@ -19,15 +19,15 @@ service apache2 start
 
 export DEBIAN_FRONTEND='non-interactive'
 
-echo -e "slapd slapd/root_password password KappaRoss" |debconf-set-selections
-echo -e "slapd slapd/root_password_again password KappaRoss" |debconf-set-selections
+echo -e "slapd slapd/root_password password goldenram" |debconf-set-selections
+echo -e "slapd slapd/root_password_again password goldenram" |debconf-set-selections
 
-echo -e "slapd slapd/internal/adminpw password test" |debconf-set-selections
-echo -e "slapd slapd/internal/generated_adminpw password test" |debconf-set-selections
-echo -e "slapd slapd/password2 password test" |debconf-set-selections
-echo -e "slapd slapd/password1 password test" |debconf-set-selections
-echo -e "slapd slapd/domain string acu.local" |debconf-set-selections
-echo -e "slapd shared/organization string IT410" |debconf-set-selections
+echo -e "slapd slapd/internal/adminpw password goldenram" |debconf-set-selections
+echo -e "slapd slapd/internal/generated_adminpw password goldenram" |debconf-set-selections
+echo -e "slapd slapd/password2 password goldenram" |debconf-set-selections
+echo -e "slapd slapd/password1 password goldenram" |debconf-set-selections
+echo -e "slapd slapd/domain string golden.ram" |debconf-set-selections
+echo -e "slapd shared/organization string CSC" |debconf-set-selections
 echo -e "slapd slapd/backend string HDB" |debconf-set-selections
 echo -e "slapd slapd/purge_database boolean true" |debconf-set-selections
 echo -e "slapd slapd/move_old_database boolean true" |debconf-set-selections
@@ -53,8 +53,8 @@ cat <<'EOF' > /etc/ldap/ldap.conf
 # This file should be world readable but not world writable.
 
 
-BASE    dc=acu,dc=local
-URI     ldap://104.219.54.109 ldap://104.219.54.109:666
+BASE    dc=golden,dc=ram
+URI     ldap://10.1.0.3 ldap://10.1.0.3:666
 
 #SIZELIMIT      12
 #TIMELIMIT      15
